@@ -1,0 +1,2 @@
+spPeoplePicker-ng-directive
+===========================
