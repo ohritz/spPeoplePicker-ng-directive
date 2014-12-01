@@ -1,13 +1,8 @@
-﻿//reference pages:
-// http://www.jeremythake.com/2014/01/using-multiple-peoplepickers-in-sharepoint-2013-hosted-app-with-angularjs-mvvm/
-//
-//
-//
-(function() {
+﻿(function() {
     var directiveId = 'spPeoplePicker';
-    angular.module('app').directive(directiveId, ['spContextData', spPeoplePicker]);
+    angular.module('app').directive(directiveId, [spPeoplePicker]);
 
-    function spPeoplePicker(spContextData) {
+    function spPeoplePicker() {
 
         var uniqueNr = 1;
 

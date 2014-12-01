@@ -2,5 +2,6 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="RootModule">
     <File Path="app\app.js" Url="app/app.js" ReplaceContent="TRUE" />
+    <File Path="app\spPeoplePicker.js" Url="app/spPeoplePicker.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

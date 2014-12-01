@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- people picker -->
-                    <sp-people-picker data-ng-model="people1" label="people" css-width="280px" allow-multi="true" get-all-info="true"></sp-people-picker>
+                    <sp-people-picker data-ng-model="people1" label="people" css-width="280px" allow-multi="true" get-all-info="allInfo"></sp-people-picker>
                 </div>    
                 <div class="col-md-6">
                     
