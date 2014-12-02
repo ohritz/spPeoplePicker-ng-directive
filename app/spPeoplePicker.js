@@ -60,17 +60,13 @@
             
 
             ngModelCtrl.$formatters.push(function(modelValue) {
-                console.log('formatter ' + uniqueId, modelValue);
                 var res;
 
                 if (modelValue && modelValue != ngModelCtrl.$viewValue) {
                     if (modelValue.constructor === Array) {
                         if (scope.getAllInfo) {
-                            console.log(modelValue);
                             modelValue.forEach(function (item) {
-                                console.log(item);
                                 (res) ? res += ';' + item.Key : res = item.Key;
-                                console.log(res);
                             });
                         } else {
                             res = modelValue.join(';');
@@ -84,15 +80,12 @@
             ngModelCtrl.$render = function() {
                 if (peoplePicker) {
                     if (ngModelCtrl.$viewValue) {
-                        console.log('render ' + uniqueId, ngModelCtrl.$viewValue);
-                        console.log(peoplePicker);
                             var toAdd = ngModelCtrl.$viewValue;
                             if (peoplePicker.TotalUserCount > 0) {
                                 for (var SPClientPeoplePickerProcessedUser in peoplePicker.ProcessedUserList) {
                                     var prUser = peoplePicker.ProcessedUserList[SPClientPeoplePickerProcessedUser];
                                     if (prUser) {
                                         var userKey = prUser.UserInfo.Key + ';';
-                                        console.log(userKey);
                                         if (toAdd.search(userKey) != -1) {
                                             toAdd = toAdd.replace(userKey,"");
                                         }
@@ -108,7 +101,6 @@
                 }
             };
             ngModelCtrl.$parsers.push(function(viewValue) {
-                console.log('parser ' + uniqueId, viewValue);
                 if (viewValue) {
                     if(!scope.getAllInfo){
                     var keys = viewValue.split(';');
