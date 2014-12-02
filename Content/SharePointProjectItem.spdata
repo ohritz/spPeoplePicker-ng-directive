@@ -3,5 +3,15 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="Content\" Type="ElementManifest" />
     <ProjectItemFile Source="App.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="css\bootstrap-custom.css" Target="Content\css\" Type="ElementFile" />
+    <ProjectItemFile Source="css\bootstrap.css" Target="Content\css\" Type="ElementFile" />
+    <ProjectItemFile Source="css\bootstrap.min.css" Target="Content\css\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.eot" Target="Content\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.svg" Target="Content\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.ttf" Target="Content\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.woff" Target="Content\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="img\glyphicons-halflings-white.png" Target="Content\img\" Type="ElementFile" />
+    <ProjectItemFile Source="img\glyphicons-halflings.png" Target="Content\img\" Type="ElementFile" />
+    <ProjectItemFile Source="img\Thumbs.db" Target="Content\img\" Type="ElementFile" />
   </Files>
 </ProjectItem>

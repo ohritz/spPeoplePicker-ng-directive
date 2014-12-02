@@ -43,23 +43,42 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\img\Thumbs.db" />
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a2d2ec4f-0080-4882-b464-cfb6750d812c}</SharePointProjectItemId>
     </None>
-    <Content Include="Pages\Elements.xml" />
+    <Content Include="app\app.js" />
+    <Content Include="app\spPeoplePicker.js" />
+    <Content Include="Content\css\bootstrap-custom.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Elements.xml" />
     <Content Include="Pages\Default.aspx" />
+    <Content Include="Pages\Elements.xml" />
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fd6b85c5-3729-47d8-b660-28cc1e54ee2e}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8d1fabe3-130c-4782-86ab-0a2f08b94400}</SharePointProjectItemId>
     </None>
+    <Content Include="Scripts\bootstrap-custom.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Elements.xml" />
-    <Content Include="Scripts\App.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\modernizr.2.6.2.custom.min.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
