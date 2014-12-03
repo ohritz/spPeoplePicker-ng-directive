@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Content">
+    <File Path="Content\App.css" Url="Content/App.css" ReplaceContent="TRUE" />
+    <File Path="Content\css\bootstrap-custom.css" Url="Content/css/bootstrap-custom.css" ReplaceContent="TRUE" />
+    <File Path="Content\css\bootstrap.css" Url="Content/css/bootstrap.css" ReplaceContent="TRUE" />
+    <File Path="Content\css\bootstrap.min.css" Url="Content/css/bootstrap.min.css" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\glyphicons-halflings-regular.eot" Url="Content/fonts/glyphicons-halflings-regular.eot" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\glyphicons-halflings-regular.svg" Url="Content/fonts/glyphicons-halflings-regular.svg" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\glyphicons-halflings-regular.ttf" Url="Content/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
+    <File Path="Content\fonts\glyphicons-halflings-regular.woff" Url="Content/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
+    <File Path="Content\img\glyphicons-halflings-white.png" Url="Content/img/glyphicons-halflings-white.png" ReplaceContent="TRUE" />
+    <File Path="Content\img\glyphicons-halflings.png" Url="Content/img/glyphicons-halflings.png" ReplaceContent="TRUE" />
+    <File Path="Content\img\Thumbs.db" Url="Content/img/Thumbs.db" ReplaceContent="TRUE" />
+  </Module>
+</Elements>
