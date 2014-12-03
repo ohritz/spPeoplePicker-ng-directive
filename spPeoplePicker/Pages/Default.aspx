@@ -70,8 +70,6 @@
     <script type="text/javascript" src="/_layouts/15/clientforms.js"></script>
     <script type="text/javascript" src="/_layouts/15/clientpeoplepicker.js"></script>
     <script type="text/javascript" src="/_layouts/15/autofill.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.RequestExecutor.js"></script>
 
     <!-- angularJS library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
