@@ -1,7 +1,5 @@
 ﻿(function() {
     var directiveId = 'spPeoplePicker';
-    angular.module('app').directive(directiveId, [spPeoplePicker]);
-
     function spPeoplePicker() {
 
         var uniqueNr = 1;
@@ -131,4 +129,6 @@
                 '</div></div>'
         };
     }
+
+    angular.module('app').directive(directiveId, [spPeoplePicker]);
 })();
