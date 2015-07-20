@@ -3,6 +3,7 @@
     var controllerId = 'peoplePickerDemo';
     angular.module('app',[]).controller(controllerId, ['$scope', peoplePickerDemo]);
 
-    function peoplePickerDemo($scope) {
+    function peoplePickerDemo() {
+        var vm = this;
     }
 })();

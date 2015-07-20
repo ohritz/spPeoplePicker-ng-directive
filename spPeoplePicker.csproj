@@ -72,7 +72,7 @@
       <SharePointProjectItemId>{a2d2ec4f-0080-4882-b464-cfb6750d812c}</SharePointProjectItemId>
     </None>
     <Content Include="app\app.js" />
-    <Content Include="app\spPeoplepicker.js" />
+    <Content Include="app\directives\spPeoplePicker.js" />
     <Content Include="Content\css\bootstrap-custom.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />

@@ -3,5 +3,6 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Type="ElementManifest" />
     <ProjectItemFile Source="app\app.js" Target="app\" Type="ElementFile" />
+    <ProjectItemFile Source="app\directives\spPeoplePicker.js" Target="app\directives\" Type="ElementFile" />
   </Files>
 </ProjectItem>
