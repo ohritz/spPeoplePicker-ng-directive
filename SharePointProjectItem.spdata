@@ -3,6 +3,8 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Type="ElementManifest" />
     <ProjectItemFile Source="app\app.js" Target="app\" Type="ElementFile" />
-    <ProjectItemFile Source="app\directives\spPeoplePicker.js" Target="app\directives\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\spPeoplePicker.directive.js" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\sfSpUtils.module.js" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\spPpJsdepLoader.service.js" Target="app\sfSpUtils\" Type="ElementFile" />
   </Files>
 </ProjectItem>
