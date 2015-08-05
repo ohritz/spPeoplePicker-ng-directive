@@ -45,7 +45,7 @@
             ngModelCtrl.$modelValue = ngModelCtrl.$modelValue || [];
             ngModelCtrl.$isEmpty = function (value) {
                 //console.log("cheking for empty");
-                if (angular.isArray(value) && value.length > 0 && (value.map(function(i){return i.Key;})).length > 0)
+                if (angular.isArray(value) && value.length > 0 && (value.map(function (i) { return i.Key; })).length > 0)
                     return false;
                 return true;
             }
@@ -61,37 +61,60 @@
                 return modelValue; //string of keys
             });
             ngModelCtrl.$render = function () {
-                console.log("in render ", ngModelCtrl.$viewValue);
+                //console.log("in render ", ngModelCtrl.$viewValue);
                 if (peoplePicker) {
-                    var toAdd = ngModelCtrl.$viewValue || [];
-                    if (peoplePicker.TotalUserCount > 0) {                        
+                    var view = ngModelCtrl.$viewValue || [];
+                    if (peoplePicker.TotalUserCount > 0) {
                         var processedUsers = Object.keys(peoplePicker.ProcessedUserList).map(function (id) {
-                            var i = peoplePicker.ProcessedUserList[id].UserInfo;
-                            return { Key: i.Key, DisplayText: i.DisplayText };
-                        });
-                        console.log(processedUsers);
-                        //for (var spClientPeoplePickerProcessedUser in peoplePicker.ProcessedUserList) {
-                        //    if (peoplePicker.ProcessedUserList.hasOwnProperty(spClientPeoplePickerProcessedUser)) {
-                        //        var prUser = peoplePicker.ProcessedUserList[spClientPeoplePickerProcessedUser];
-                        //        if (prUser) {
-                        //            var userKey = prUser.UserInfo.Key + ";";
-                        //            if (toAdd.search(userKey) !== -1) {
-                        //                toAdd = toAdd.replace(userKey, "");
-                        //            }
-                        //        }
 
-                        //    }
-                        //}
-                        processedUsers.forEach(function (item) {
-                            console.log(item);
-                            if (toAdd.indexOf(item) > 0) {
-                                peoplePicker.DeleteProcessedUser(item);
-                            }
+                            var user = peoplePicker.ProcessedUserList[id];
+                            return docNode = document.getElementById(user.UserContainerElementId);
+
                         });
+
+                        function DeleteProcessedUser(a) {
+                            var e = null ;
+                            if (a == null ) {
+                                var c = document.getElementById(this.ResolvedListElementId);
+                                if (c != null )
+                                    a = c.lastChild
+                            }
+                            if (a != null ) {
+                                var b = a.id;
+                                a.parentNode.removeChild(a);
+                                var d = this.ProcessedUserList[b];
+                                if (d != null  && !d.ResolvedUser)
+                                    this.UnresolvedUserCount--;
+                                this.TotalUserCount--;
+                                delete this.ProcessedUserList[b];
+                                //this.OnControlResolvedUserChanged();
+                                //this.OnControlValueChanged()
+                            }
+                        }
+                 
+
+                        function isUserInViewValues(userDocNode) {
+                            for (var i = 0, length = view.length; i < length; i++) {
+                                console.log(userDocNode.getAttribute("sid"), view[i].Key)
+                                if (userDocNode.getAttribute("sid") === view[i].Key) {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        }
+
+                        for (var pu = 0; pu < processedUsers.length; pu++) {
+                            console.log(processedUsers[pu]);
+                            if(!isUserInViewValues(processedUsers[pu]))
+                                DeleteProcessedUser.apply(peoplePicker, processedUsers[pu]);
+                        }                      
 
                     }
-                    console.log(peoplePicker);
-                    console.log(toAdd);
+                    console.log(view);
+                    toAdd = view.filter(function (item, index, array) {
+                        return array.indexOf(item) === index;
+                    });
+
                     peoplePicker.AddUserKeys(toAdd.map(function (item) {
                         return item.Key;
                     }).join(";"));
@@ -136,11 +159,11 @@
                 //console.log(ngModelCtrl.$modelValue);
                 //console.log(ngModelCtrl.$viewValue);
                 //console.groupEnd();
-                //if(compareArray(ngModelCtrl.$modelValue,ngModelCtrl.$viewValue))
-                    //ngModelCtrl.$render();
-                    //ngModelCtrl.$setViewValue(val);
-                    
-                
+                //console.log(compareArray(ngModelCtrl.$modelValue, ngModelCtrl.$viewValue));
+                if (!compareArray(ngModelCtrl.$modelValue, ngModelCtrl.$viewValue)) {
+                    ngModelCtrl.$setViewValue(val);
+                    ngModelCtrl.$render();
+                }
             }, true);
 
 
