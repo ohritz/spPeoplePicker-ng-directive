@@ -60,53 +60,56 @@
                 //}
                 return modelValue; //string of keys
             });
+
+            //utility functions
+            function DeleteProcessedUser(a) {
+                var e = null;
+                if (a == null) {
+                    var c = document.getElementById(this.ResolvedListElementId);
+                    if (c != null)
+                        a = c.lastChild
+                }
+                if (a != null) {
+                    var b = a.id;
+                    a.parentNode.removeChild(a);
+                    var d = this.ProcessedUserList[b];
+                    if (d != null && !d.ResolvedUser)
+                        this.UnresolvedUserCount--;
+                    this.TotalUserCount--;
+                    delete this.ProcessedUserList[b];
+                    //this.OnControlResolvedUserChanged();
+                    //this.OnControlValueChanged()
+                }
+            }
+            function isUserInViewValues(user, view) {
+                for (var i = 0, length = view.length; i < length; i++) {
+                    console.log(user.Key, view[i].Key)
+                    if (user.Key === view[i].Key) {
+                        return true;
+                    }
+                }
+                return false;
+            }
             ngModelCtrl.$render = function () {
                 //console.log("in render ", ngModelCtrl.$viewValue);
+                //todo rethink a little the flow.. check what we have in the people picker, what we have in the view.. decide what should be removed and what should be removed.
+                //and run
+
                 if (peoplePicker) {
                     var view = ngModelCtrl.$viewValue || [];
                     if (peoplePicker.TotalUserCount > 0) {
-                        var processedUsers = Object.keys(peoplePicker.ProcessedUserList).map(function (id) {
-
+                        var usersInPicker = Object.keys(peoplePicker.ProcessedUserList).map(function (id) {
                             var user = peoplePicker.ProcessedUserList[id];
-                            return docNode = document.getElementById(user.UserContainerElementId);
-
+                            //var docNodeId = document.getElementById(user.UserContainerElementId);
+                            return { Key: user.UserInfo.Key, UserContainerElementId: user.UserContainerElementId };
                         });
-
-                        function DeleteProcessedUser(a) {
-                            var e = null ;
-                            if (a == null ) {
-                                var c = document.getElementById(this.ResolvedListElementId);
-                                if (c != null )
-                                    a = c.lastChild
+                        
+                        for (var i = 0; i < usersInPicker.length; i++) {
+                            console.log(usersInPicker[i]);
+                            if (!isUserInViewValues(usersInPicker[i], view)) {
+                                var docNode = document.getElementById(usersInPicker[i].UserContainerElementId);
+                                DeleteProcessedUser.apply(peoplePicker, docNode);
                             }
-                            if (a != null ) {
-                                var b = a.id;
-                                a.parentNode.removeChild(a);
-                                var d = this.ProcessedUserList[b];
-                                if (d != null  && !d.ResolvedUser)
-                                    this.UnresolvedUserCount--;
-                                this.TotalUserCount--;
-                                delete this.ProcessedUserList[b];
-                                //this.OnControlResolvedUserChanged();
-                                //this.OnControlValueChanged()
-                            }
-                        }
-                 
-
-                        function isUserInViewValues(userDocNode) {
-                            for (var i = 0, length = view.length; i < length; i++) {
-                                console.log(userDocNode.getAttribute("sid"), view[i].Key)
-                                if (userDocNode.getAttribute("sid") === view[i].Key) {
-                                    return true;
-                                }
-                            }
-                            return false;
-                        }
-
-                        for (var pu = 0; pu < processedUsers.length; pu++) {
-                            console.log(processedUsers[pu]);
-                            if(!isUserInViewValues(processedUsers[pu]))
-                                DeleteProcessedUser.apply(peoplePicker, processedUsers[pu]);
                         }                      
 
                     }
