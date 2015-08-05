@@ -42,7 +42,9 @@
             peoplePicker = window.SPClientPeoplePicker.SPClientPeoplePickerDict[pickerDivId];
             //console.log(peoplePicker);
 
-            ngModelCtrl.$modelValue = ngModelCtrl.$modelValue || [];
+            //ngModelCtrl.$modelValue = ngModelCtrl.$modelValue || [];
+            scope.ngModel = ngModelCtrl.$modelValue || [];
+
             ngModelCtrl.$isEmpty = function (value) {
                 //console.log("cheking for empty");
                 if (angular.isArray(value) && value.length > 0 && (value.map(function (i) { return i.Key; })).length > 0)
@@ -50,7 +52,7 @@
                 return true;
             }
             ngModelCtrl.$formatters.push(function (modelValue) {
-                //console.log("formatters", modelValue);
+                console.log("formatters", modelValue);
                 //if (angular.isUndefined(modelValue))
                 //    modelValue = "";
                 //if (angular.isArray(modelValue)) {
@@ -90,32 +92,60 @@
                 }
                 return false;
             }
+            Array.prototype.unique = function (fn) {
+                return this.reduce(function (accum, current) {
+                    if (typeof fn === "function") {
+                        if (accum.deepIndexOf(current, fn) < 0)
+                            accum.push(current);
+                    } else {
+                        if (accum.indexOf(current) < 0) {
+                            accum.push(current);
+                        }
+                    }
+                    return accum;
+                }, []);
+            }
+            Array.prototype.deepIndexOf = function (searchElement, fn) {
+                if (this == null) {
+                    throw new TypeError('"this" is null or not defined');
+                }
+
+                var O = Object(this);
+                var len = O.length
+                var k;
+                if (len === 0) {
+                    return -1;
+                }
+                for (k = 0; k < len; k++) {
+                    if(fn(searchElement, this[k]))
+                        return k;
+                }
+                return -1;
+            };
             ngModelCtrl.$render = function () {
                 //console.log("in render ", ngModelCtrl.$viewValue);
-                //todo rethink a little the flow.. check what we have in the people picker, what we have in the view.. decide what should be removed and what should be removed.
-                //and run
-
                 if (peoplePicker) {
                     var view = ngModelCtrl.$viewValue || [];
+                    var usersInPicker = [];
+                    var toAdd = [];
+                    var toFilter = [];
                     if (peoplePicker.TotalUserCount > 0) {
-                        var usersInPicker = Object.keys(peoplePicker.ProcessedUserList).map(function (id) {
+                        usersInPicker = Object.keys(peoplePicker.ProcessedUserList).map(function (id) {
                             var user = peoplePicker.ProcessedUserList[id];
-                            //var docNodeId = document.getElementById(user.UserContainerElementId);
                             return { Key: user.UserInfo.Key, UserContainerElementId: user.UserContainerElementId };
                         });
                         
                         for (var i = 0; i < usersInPicker.length; i++) {
-                            console.log(usersInPicker[i]);
                             if (!isUserInViewValues(usersInPicker[i], view)) {
                                 var docNode = document.getElementById(usersInPicker[i].UserContainerElementId);
                                 DeleteProcessedUser.apply(peoplePicker, docNode);
+                            } else {
+                                toFilter.push(usersInPicker[i].Key);
                             }
-                        }                      
-
+                        }
                     }
-                    console.log(view);
-                    toAdd = view.filter(function (item, index, array) {
-                        return array.indexOf(item) === index;
+                    toAdd = view.filter(function (item) {
+                        return toFilter.indexOf(item.Key) === -1;
                     });
 
                     peoplePicker.AddUserKeys(toAdd.map(function (item) {
@@ -128,7 +158,7 @@
             };
 
             ngModelCtrl.$parsers.push(function (viewValue) {
-                //console.log("viewValue: ", viewValue);
+                console.log("viewValue: ", viewValue);
 
                 if (ngModelCtrl.$isEmpty(viewValue)) {
                     return viewValue;
@@ -157,16 +187,19 @@
 
             }
             scope.$watch("ngModel", function (val) {
-                //console.group("watch");
-                //console.log(val);
-                //console.log(ngModelCtrl.$modelValue);
-                //console.log(ngModelCtrl.$viewValue);
-                //console.groupEnd();
-                //console.log(compareArray(ngModelCtrl.$modelValue, ngModelCtrl.$viewValue));
+                console.group("watch");
+                console.log(val);
+                console.log(ngModelCtrl.$modelValue);
+                console.log(ngModelCtrl.$viewValue);
+                console.groupEnd();
+                console.log(compareArray(ngModelCtrl.$modelValue, ngModelCtrl.$viewValue));
                 if (!compareArray(ngModelCtrl.$modelValue, ngModelCtrl.$viewValue)) {
-                    ngModelCtrl.$setViewValue(val);
-                    ngModelCtrl.$render();
+                    var unique = val.unique(function (a, b) {
+                        return a.Key === b.Key;
+                    });
+                    ngModelCtrl.$setViewValue(unique);
                 }
+                ngModelCtrl.$render();
             }, true);
 
 
