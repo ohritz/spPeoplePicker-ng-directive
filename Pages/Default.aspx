@@ -35,24 +35,6 @@
                 <div class="col-md-3">
                     <button data-ng-click="vm.addPerson()" type="button">+</button>
                     <button data-ng-click="vm.remove()" type="button">-</button>
-                    <%--<div class="form-group" data-ng-repeat="person in vm.people1">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <label>Test key {{$index}}</label>
-                            </div>
-                            <div>
-                                <input class="form-control" type="text" data-ng-model="person.Key" />
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <label>Test displayText {{$index}}</label>
-                            </div>
-                            <div>
-                                <input class="form-control" type="text" data-ng-model="person.DisplayText" />
-                            </div>
-                        </div>
-                    </div>--%>
                 </div>
             </div>
             <div class="row">
@@ -67,20 +49,21 @@
     </div>
 
     <!-- other vendor libraries -->
-    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <%--<script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
     <script src="../Scripts/respond.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap-custom.js"></script>
-    <script src="../Scripts/modernizr.2.6.2.custom.min.js"></script>
+    <script src="../Scripts/modernizr.2.6.2.custom.min.js"></script>--%>
     
     
     <!-- these js files will eventualy be loaded by a service when the directive is used -->
-    <script type="text/javascript" src="/_layouts/15/clienttemplates.js"></script>
-    <script type="text/javascript" src="/_layouts/15/clientforms.js"></script>
-    <script type="text/javascript" src="/_layouts/15/clientpeoplepicker.js"></script>
+    <%--<script type="text/javascript" src="/_layouts/15/clienttemplates.js"></script>
+    <script type="text/javascript" src="/_layouts/15/clientforms.js"></script>    
     <script type="text/javascript" src="/_layouts/15/autofill.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.RequestExecutor.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.RequestExecutor.js"></script>--%>
+
+    <%--<script type="text/javascript" src="/_layouts/15/clientpeoplepicker.js"></script>--%>
 
     <!-- angularJS library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
@@ -90,5 +73,5 @@
     <!-- the code for the directive -->
     <script src="../app/sfSpUtils/sfSpUtils.module.js"></script>
     <script src="../app/sfSpUtils/spPeoplePicker.directive.js"></script>
-
+    <script src="../app/sfSpUtils/spPpJsdepLoader.service.js"></script>
 </asp:Content>

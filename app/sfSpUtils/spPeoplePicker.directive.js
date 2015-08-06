@@ -3,8 +3,9 @@
     'use strict';
     var directiveId = "spPeoplePicker";
 
-    function spPeoplePicker() {
+    function spPeoplePicker(spPpJsdepLoader) {
         var uniqueNr = 1;
+
         //utility functions
         function DeleteProcessedUser(a) {
             var e = null;
@@ -26,7 +27,7 @@
             }
         }
         function isUserInViewValues(user, view) {
-            for (var i = 0, length = view.length; i < length; i++) {                
+            for (var i = 0, length = view.length; i < length; i++) {
                 if (user.Key === view[i].Key) {
                     return true;
                 }
@@ -94,55 +95,46 @@
             // we define a schema object for initilizing the picker.
             // some of the values we get from the attributes on the directive.
             // if they are not set, we set standard values
-            var schema = {};
-            //does this need to be able to be set as an attr?
-            schema["PrincipalAccountType"] = "User,DL,SecGroup,SPGroup";
-            schema["SearchPrincipalSource"] = 15;
-            schema["ResolvePrincipalSource"] = 15;
-            schema["AllowMultipleValues"] = (attrs.allowMulti) ? attrs.allowMulti : true;
-            schema["MaximumEntitySuggestions"] = 25;
-            schema["Width"] = (attrs.cssWidth) ? attrs.cssWidth : "220px";
+            var schema = {
+                PrincipalAccountType: "User,DL,SecGroup,SPGroup",
+                SearchPrincipalSource: 15,
+                ResolvePrincipalSource: 15,
+                AllowMultipleValues: (attrs.allowMulti) ? attrs.allowMulti : true,
+                MaximumEntitySuggestions: 25,
+                Width: (attrs.cssWidth) ? attrs.cssWidth : "220px",
 
-            // on the schema we set a function to raise when a new user is resolved.
-            // in the function vi get the users, and update the view value on the model controller.
-            schema["OnUserResolvedClientScript"] = function (elementId, values) {
-                ngModelCtrl.$setViewValue(values);
-            };
+                // on the schema we set a function to raise when a new user is resolved.
+                // in the function vi get the users, and update the view value on the model controller.
+                OnUserResolvedClientScript: function (elementId, values) {
+                    ngModelCtrl.$setViewValue(values);
+                }
+            }
+
 
             //todo check if this function is more useful, for removing items on the model.
             //schema["OnValueChangedClientScript"] = function (elementId, values) {};
 
-            // Render and initialize the picker. 
-            // Pass the ID of the DOM element that contains the picker, an empty array of initial
-            // PickerEntity objects to set the picker value, and a schema that defines
-            // picker properties.
-            window.SPClientPeoplePicker_InitStandaloneControlWrapper(pickerGeneratorId, [], schema);
-            // Get the people picker object from the page.
-            peoplePicker = window.SPClientPeoplePicker.SPClientPeoplePickerDict[pickerDivId];
-            
-            
+
+            spPpJsdepLoader.scriptsLoaded.then(function () {
+                // Render and initialize the picker. 
+                // Pass the ID of the DOM element that contains the picker, an empty array of initial
+                // PickerEntity objects to set the picker value, and a schema that defines
+                // picker properties.
+                window.SPClientPeoplePicker_InitStandaloneControlWrapper(pickerGeneratorId, [], schema);
+                // Get the people picker object from the page.
+                peoplePicker = window.SPClientPeoplePicker.SPClientPeoplePickerDict[pickerDivId];
+            }, function () {
+                throw new Error("could not load Scripts");
+            });
+
             //the definition of empty is in this directive more abstract, being that if its not a array of the datastructure we've defined its empty..
-            ngModelCtrl.$isEmpty = function (value) {            
+            ngModelCtrl.$isEmpty = function (value) {
                 if (angular.isArray(value) && value.length > 0 && (value.map(function (i) { return i.Key; })).length > 0)
                     return false;
                 return true;
             }
 
-            //ngModelCtrl.$formatters.push(function (modelValue) {
-            //    console.log("formatters", modelValue);
-            //    //if (angular.isUndefined(modelValue))
-            //    //    modelValue = "";
-            //    //if (angular.isArray(modelValue)) {
-            //    //    return modelValue.map(function (item) {
-            //    //        return item.Key;
-            //    //    }).join(";");
-            //    //}
-            //    return modelValue; //string of keys
-            //});
-
-            
             ngModelCtrl.$render = function () {
-                //console.log("in render ", ngModelCtrl.$viewValue);
                 if (peoplePicker) {
                     var view = ngModelCtrl.$viewValue || [];
                     var usersInPicker = [];
@@ -184,7 +176,7 @@
                     return { Key: i.Key, DisplayText: i.DisplayText };
                 });
 
-            });            
+            });
             scope.$watch("ngModel", function (val) {
                 if (!compareArray(ngModelCtrl.$modelValue, ngModelCtrl.$viewValue)) {
                     var unique = makeUnique(val, function (a, b) {
@@ -212,6 +204,6 @@
         };
     }
 
-    angular.module("sfSpUtils").directive(directiveId, [spPeoplePicker]);
+    angular.module("sfSpUtils").directive(directiveId, ["spPpJsdepLoader", spPeoplePicker]);
 })(angular = angular || window.angular);
 
