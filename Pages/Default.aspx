@@ -30,28 +30,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <!-- people picker -->
-                    <sp-people-picker data-ng-model="vm.people1" label="people" css-width="280px" allow-multi="true" get-all-info="vm.allInfo"></sp-people-picker>
+                    <sp-people-picker data-ng-model="vm.people1" css-width="280px" allow-multi="true"></sp-people-picker>
                 </div>
                 <div class="col-md-3">
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" data-ng-model="vm.allInfo" value="true">
-                            Get All info
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <label>Test Input</label>
-                            </div>
-                            <div>
-                            <input  class="form-control"  type="text" data-ng-model="vm.people1" />
-                                </div>
-                        </div>
-                    </div>
+                    <button data-ng-click="vm.addPerson()" type="button">+</button>
+                    <button data-ng-click="vm.remove()" type="button">-</button>
                 </div>
             </div>
             <div class="row">
@@ -66,24 +49,21 @@
     </div>
 
     <!-- other vendor libraries -->
-    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <%--<script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
     <script src="../Scripts/respond.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap-custom.js"></script>
-    <script src="../Scripts/modernizr.2.6.2.custom.min.js"></script>
-
-    <!-- core sharepoint libraries -->
-    <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.js"></script>
-
-
-    <!-- Sharepoint libraries required for the people picker -->
-    <script type="text/javascript" src="/_layouts/15/clienttemplates.js"></script>
-    <script type="text/javascript" src="/_layouts/15/clientforms.js"></script>
-    <script type="text/javascript" src="/_layouts/15/clientpeoplepicker.js"></script>
+    <script src="../Scripts/modernizr.2.6.2.custom.min.js"></script>--%>
+    
+    
+    <!-- these js files will eventualy be loaded by a service when the directive is used -->
+    <%--<script type="text/javascript" src="/_layouts/15/clienttemplates.js"></script>
+    <script type="text/javascript" src="/_layouts/15/clientforms.js"></script>    
     <script type="text/javascript" src="/_layouts/15/autofill.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.RequestExecutor.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.RequestExecutor.js"></script>--%>
+
+    <%--<script type="text/javascript" src="/_layouts/15/clientpeoplepicker.js"></script>--%>
 
     <!-- angularJS library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
@@ -91,6 +71,7 @@
     <!-- js for initilizing the angular app -->
     <script src="../app/app.js"></script>
     <!-- the code for the directive -->
-    <script src="../app/directives/spPeoplePicker.js"></script>
-
+    <script src="../app/sfSpUtils/sfSpUtils.module.js"></script>
+    <script src="../app/sfSpUtils/spPeoplePicker.directive.js"></script>
+    <script src="../app/sfSpUtils/spPpJsdepLoader.service.js"></script>
 </asp:Content>
