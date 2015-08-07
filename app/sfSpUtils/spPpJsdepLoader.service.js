@@ -46,5 +46,5 @@
          this.scriptsLoaded = scriptLoader.promise
         
     }
-    angular.module("sfSpUtils").service("spPpJsdepLoader", ["$document","$q",spPpJsdepLoader]);
+    angular.module("spUtils").service("spPpJsdepLoader", ["$document", "$q", spPpJsdepLoader]);
 }(angular));

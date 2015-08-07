@@ -1,5 +1,5 @@
 ﻿(function (angular) {
 	"use strict";
 
-	angular.module("sfSpUtils", []);
+	angular.module("spUtils", []);
 }(angular = angular || window.angular));
