@@ -4,7 +4,11 @@
     <ProjectItemFile Source="Elements.xml" Type="ElementManifest" />
     <ProjectItemFile Source="app\app.js" Target="app\" Type="ElementFile" />
     <ProjectItemFile Source="app\sfSpUtils\spPeoplePicker.directive.js" Target="app\sfSpUtils\" Type="ElementFile" />
-    <ProjectItemFile Source="app\sfSpUtils\sfSpUtils.module.js" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\Sp-ngUtils.module.js" Target="app\sfSpUtils\" Type="ElementFile" />
     <ProjectItemFile Source="app\sfSpUtils\spPpJsdepLoader.service.js" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\sp-ngUtils.js.bundle" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\sp-ngUtils.js" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\sp-ngUtils.min.js" Target="app\sfSpUtils\" Type="ElementFile" />
+    <ProjectItemFile Source="app\sfSpUtils\sp-ngUtils.min.js.map" Target="app\sfSpUtils\" Type="ElementFile" />
   </Files>
 </ProjectItem>

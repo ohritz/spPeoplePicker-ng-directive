@@ -71,7 +71,7 @@
     <!-- js for initilizing the angular app -->
     <script src="../app/app.js"></script>
     <!-- the code for the directive -->
-    <script src="../app/sfSpUtils/sfSpUtils.module.js"></script>
+    <script src="../app/sfSpUtils/Sp-ngUtils.module.js"></script>
     <script src="../app/sfSpUtils/spPeoplePicker.directive.js"></script>
     <script src="../app/sfSpUtils/spPpJsdepLoader.service.js"></script>
 </asp:Content>

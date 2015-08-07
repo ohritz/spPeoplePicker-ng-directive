@@ -3,7 +3,11 @@
   <Module Name="RootModule">
     <File Path="app\app.js" Url="app/app.js" ReplaceContent="TRUE" />
     <File Path="app\sfSpUtils\spPeoplePicker.directive.js" Url="app/sfSpUtils/spPeoplePicker.directive.js" ReplaceContent="TRUE" />
-    <File Path="app\sfSpUtils\sfSpUtils.module.js" Url="app/sfSpUtils/sfSpUtils.module.js" ReplaceContent="TRUE" />
+    <File Path="app\sfSpUtils\Sp-ngUtils.module.js" Url="app/sfSpUtils/Sp-ngUtils.module.js" ReplaceContent="TRUE" />
     <File Path="app\sfSpUtils\spPpJsdepLoader.service.js" Url="app/sfSpUtils/spPpJsdepLoader.service.js" ReplaceContent="TRUE" />
+    <File Path="app\sfSpUtils\sp-ngUtils.js.bundle" Url="app/sfSpUtils/sp-ngUtils.js.bundle" ReplaceContent="TRUE" />
+    <File Path="app\sfSpUtils\sp-ngUtils.js" Url="app/sfSpUtils/sp-ngUtils.js" ReplaceContent="TRUE" />
+    <File Path="app\sfSpUtils\sp-ngUtils.min.js" Url="app/sfSpUtils/sp-ngUtils.min.js" ReplaceContent="TRUE" />
+    <File Path="app\sfSpUtils\sp-ngUtils.min.js.map" Url="app/sfSpUtils/sp-ngUtils.min.js.map" ReplaceContent="TRUE" />
   </Module>
 </Elements>

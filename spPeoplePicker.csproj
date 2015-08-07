@@ -63,7 +63,11 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app\sfSpUtils\sfSpUtils.module.js" />
+    <Content Include="app\sfSpUtils\Sp-ngUtils.module.js" />
+    <None Include="app\sfSpUtils\sp-ngUtils.js.bundle" />
+    <None Include="app\sfSpUtils\sp-ngUtils.min.js.map">
+      <DependentUpon>sp-ngUtils.min.js</DependentUpon>
+    </None>
     <None Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -73,6 +77,12 @@
       <SharePointProjectItemId>{a2d2ec4f-0080-4882-b464-cfb6750d812c}</SharePointProjectItemId>
     </None>
     <Content Include="app\app.js" />
+    <Content Include="app\sfSpUtils\sp-ngUtils.js">
+      <DependentUpon>sp-ngUtils.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="app\sfSpUtils\sp-ngUtils.min.js">
+      <DependentUpon>sp-ngUtils.js</DependentUpon>
+    </Content>
     <Content Include="app\sfSpUtils\spPeoplePicker.directive.js" />
     <Content Include="app\sfSpUtils\spPpJsdepLoader.service.js" />
     <Content Include="Content\css\bootstrap-custom.css" />
