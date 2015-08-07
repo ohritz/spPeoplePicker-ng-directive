@@ -5,7 +5,6 @@
 	angular.module("spUtils", []);
 }(angular = angular || window.angular));
 ///#source 1 1 /app/sfSpUtils/spPpJsdepLoader.service.js
-var angular = angular || window.angular;
 (function (angular) {
     'use strict';
     function spPpJsdepLoader($document, $q) {
@@ -54,7 +53,7 @@ var angular = angular || window.angular;
         
     }
     angular.module("spUtils").service("spPpJsdepLoader", ["$document", "$q", spPpJsdepLoader]);
-}(angular));
+}(angular = angular || window.angular));
 ///#source 1 1 /app/sfSpUtils/spPeoplePicker.directive.js
 
 (function (angular) {
@@ -263,6 +262,6 @@ var angular = angular || window.angular;
     }
 
     angular.module("spUtils").directive(directiveId, ["spPpJsdepLoader", spPeoplePicker]);
-})(angular = angular || window.angular);
+}(angular = angular || window.angular));
 
 

@@ -205,5 +205,5 @@
     }
 
     angular.module("spUtils").directive(directiveId, ["spPpJsdepLoader", spPeoplePicker]);
-})(angular = angular || window.angular);
+}(angular = angular || window.angular));
 

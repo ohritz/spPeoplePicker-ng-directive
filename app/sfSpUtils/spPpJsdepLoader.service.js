@@ -1,5 +1,4 @@
-﻿var angular = angular || window.angular;
-(function (angular) {
+﻿(function (angular) {
     'use strict';
     function spPpJsdepLoader($document, $q) {
         // todo, implement a checking and loading of needed script files for Share Point People Picker
@@ -47,4 +46,4 @@
         
     }
     angular.module("spUtils").service("spPpJsdepLoader", ["$document", "$q", spPpJsdepLoader]);
-}(angular));
+}(angular = angular || window.angular));
